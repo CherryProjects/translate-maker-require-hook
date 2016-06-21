@@ -5,15 +5,17 @@ import debug from 'debug';
 import qs from 'qs';
 import path from 'path';
 
-const log = debug('translate-maker-require-hook');
+const logError = debug('translate-maker-require-hook:error');
+const logWarning = debug('translate-maker-require-hook:warning');
+const logDependency = debug('translate-maker-require-hook:dependency');
 
 function process(options, dir, extractLocales) {
   const params = {
     query: '?' + qs.stringify(options),
     resourcePath: path.resolve(dir + '/locale'),
-    addDependency: (file) => log('Dependecy: ' + file),
-    emitWarning: (message) => log('WARNING: ' + message),
-    emitError: (message) => log('ERROR: ' + message),
+    addDependency: (file) => logDependency(file),
+    emitWarning: (message) => logWarning(message),
+    emitError: (message) => logError(message),
   };
 
   if (options.path) {
