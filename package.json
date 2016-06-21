@@ -1,6 +1,6 @@
 {
   "name": "translate-maker-require-hook",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Locale require hook for node",
   "author": {
     "name": "Zlatko Fedor",

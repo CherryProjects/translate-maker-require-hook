@@ -26,7 +26,7 @@ function process(options, dir, extractLocales) {
 export default function hook(options = {}) {
   const extractLocales = new ExtractLocales(options);
 
-  return requireHacker.global_hook('translate-maker', (requirePath, module) => {
+  const hookInstance = requireHacker.global_hook('translate-maker', (requirePath, module) => {
     const currentPath = requireHacker.resolve(requirePath, module);
 
     if (endsWith(currentPath, '/locale/locale')) {
@@ -41,4 +41,8 @@ export default function hook(options = {}) {
 
     return void 0;
   });
+
+  hookInstance.save = () => extractLocales.save();
+
+  return hookInstance;
 }
