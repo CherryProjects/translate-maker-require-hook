@@ -11,6 +11,7 @@ const logDependency = debug('translate-maker-require-hook:dependency');
 
 function process(options, dir, extractLocales) {
   const params = {
+    options, // getLocalIndent is using it
     query: '?' + qs.stringify(options),
     resourcePath: path.resolve(dir + '/locale'),
     addDependency: (file) => logDependency(file),
