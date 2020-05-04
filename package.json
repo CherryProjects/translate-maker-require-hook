@@ -30,12 +30,13 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "npm run snyk-protect && npm run build",
     "coveralls": "babel-node ./node_modules/gulp/bin/gulp.js coveralls",
     "doc": "babel-node ./node_modules/gulp/bin/gulp.js doc",
     "test": "babel-node ./node_modules/gulp/bin/gulp.js test",
     "build": "babel-node ./node_modules/gulp/bin/gulp.js build",
-    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.jsx ."
+    "eslint": "node ./node_modules/eslint/bin/eslint.js --ext .js,.jsx .",
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "async": "^2.1.4",
@@ -44,7 +45,8 @@
     "translate-maker-loader": "^0.2.16",
     "keymirror": "^0.1.1",
     "require-hacker": "^2.1.4",
-    "qs": "^6.3.0"
+    "qs": "^6.3.0",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -70,5 +72,6 @@
     "coveralls": "^2.11.15",
     "isparta": "^4.0.0",
     "translate-maker": "^0.5.8"
-  }
+  },
+  "snyk": true
 }
